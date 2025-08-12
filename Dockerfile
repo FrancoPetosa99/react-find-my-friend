@@ -30,8 +30,6 @@ COPY --from=build /app/dist ./dist
 # Exponer el puerto 3000
 EXPOSE 3000
 
-# Variables de entorno para producción (ajusta según necesites)
-ENV NODE_ENV=production
 
 # Comando para servir la aplicación
 CMD ["serve", "-s", "dist", "-l", "3000"]
