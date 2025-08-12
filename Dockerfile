@@ -30,6 +30,5 @@ COPY --from=build /app/dist ./dist
 # Exponer el puerto 3000
 EXPOSE 3000
 
-
 # Comando para servir la aplicación
 CMD ["serve", "-s", "dist", "-l", "3000"]
