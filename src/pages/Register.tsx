@@ -24,7 +24,7 @@ const Register: React.FC = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error when user starts typing
+    
     if (errors[name as keyof RegisterForm]) {
       setErrors(prev => ({
         ...prev,
@@ -99,13 +99,11 @@ const Register: React.FC = () => {
               <h2>🐾 Registrarse</h2>
               <p className="text-muted">Crea tu cuenta para publicar mascotas perdidas</p>
             </div>
-
             {registerError && (
               <Alert variant="danger" dismissible onClose={() => setRegisterError('')}>
                 {registerError}
               </Alert>
             )}
-
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
                 <Form.Label className="text-start w-100">Nombre y Apellido</Form.Label>
@@ -121,7 +119,6 @@ const Register: React.FC = () => {
                   {errors.name}
                 </Form.Control.Feedback>
               </Form.Group>
-
               <Form.Group className="mb-3">
                 <Form.Label className="text-start w-100">Email</Form.Label>
                 <Form.Control
@@ -136,7 +133,6 @@ const Register: React.FC = () => {
                   {errors.email}
                 </Form.Control.Feedback>
               </Form.Group>
-
               <Form.Group className="mb-3">
                 <Form.Label className="text-start w-100">Teléfono</Form.Label>
                 <Form.Control
@@ -181,7 +177,6 @@ const Register: React.FC = () => {
                   {errors.confirmPassword}
                 </Form.Control.Feedback>
               </Form.Group>
-
               <Button
                 variant="primary"
                 type="submit"
@@ -191,7 +186,6 @@ const Register: React.FC = () => {
                 {isSubmitting ? 'Registrando...' : 'Registrarse'}
               </Button>
             </Form>
-
             <div className="text-center">
               <p className="mb-0">
                 ¿Ya tienes cuenta?{' '}

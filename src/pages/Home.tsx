@@ -23,9 +23,8 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  // Estados de paginación
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(9); // 3x3 grid en desktop
+  const [itemsPerPage] = useState(9);
 
   useEffect(() => {
     const loadPets = async () => {
@@ -48,7 +47,6 @@ const Home: React.FC = () => {
   const handleFilterChange = (key: keyof FilterOptions, value: string) => {
     const newFilters = { ...filters, [key]: value };
     
-    // Si se cambia el tipo, resetear la raza para que sea consistente
     if (key === 'type') {
       newFilters.breed = '';
     }
@@ -60,26 +58,22 @@ const Home: React.FC = () => {
   const applyFilters = (currentFilters: FilterOptions) => {
     let filtered = pets;
 
-    // Apply type filter
     if (currentFilters.type) {
       filtered = filtered.filter(pet => pet.type === currentFilters.type);
     }
 
-    // Apply breed filter
     if (currentFilters.breed) {
       filtered = filtered.filter(pet => pet.breed === currentFilters.breed);
     }
 
-    // Apply city filter
     if (currentFilters.city) {
       filtered = filtered.filter(pet => pet.location.includes(currentFilters.city!));
     }
 
     setFilteredPets(filtered);
-    setCurrentPage(1); // Reset a la primera página cuando se aplican filtros
+    setCurrentPage(1);
   };
 
-  // Obtener razas disponibles según el tipo seleccionado
   const getAvailableBreeds = () => {
     if (!filters.type) {
       return [];
@@ -91,7 +85,6 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      {/* Hero Section */}
       <div style={heroSectionStyles} className="mb-4">
         <h1>🐾 Encuentra tu mascota perdida</h1>
         <p className="lead">Ayudamos a reunir familias con sus mascotas perdidas</p>
@@ -99,8 +92,6 @@ const Home: React.FC = () => {
           Publicar Mascota Perdida
         </Button>
       </div>
-
-      {/* Filters Section */}
       <Card className="mb-4">
         <Card.Body>
           <Row>
@@ -170,13 +161,9 @@ const Home: React.FC = () => {
           </Row>
         </Card.Body>
       </Card>
-
-      {/* Results */}
       <div className="mb-3">
         <h4>Mascotas perdidas ({filteredPets.length})</h4>
       </div>
-
-            {/* Pets Grid */}
       <Row>
         {filteredPets
           .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
@@ -186,8 +173,6 @@ const Home: React.FC = () => {
             </Col>
           ))}
       </Row>
-
-      {/* Paginación */}
       {filteredPets.length > 0 && (
         <div className="mt-4">
           <Pagination
@@ -199,7 +184,6 @@ const Home: React.FC = () => {
           />
         </div>
       )}
-
       {filteredPets.length === 0 && (
         <div className="text-center py-5">
           <h5>No se encontraron mascotas con los filtros aplicados</h5>

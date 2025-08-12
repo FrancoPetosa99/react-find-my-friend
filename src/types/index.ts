@@ -18,7 +18,6 @@ export interface PetDetail extends Pet {
   can_delete: boolean;
 }
 
-// Nueva interfaz para la respuesta de la API
 export interface PetApiResponse {
   pet_id: number;
   owner_id: number;
@@ -38,7 +37,6 @@ export interface PetApiResponse {
   can_delete: boolean;
 }
 
-// Interfaz para la respuesta paginada de la API
 export interface PetListApiResponse {
   id: number;
   name: string;
@@ -64,31 +62,27 @@ export interface PaginatedApiResponse {
   has_prev: boolean;
 }
 
-// Interfaz para la estructura de datos al crear una mascota en la API
 export interface CreatePetApiRequest {
   name: string;
   description: string;
   type: string;
   breed: string;
-  last_seen_time: string; // Formato: "DD-MM-YYYY"
+  last_seen_time: string;
   last_seen_province: string;
   last_seen_city: string;
   picture_url?: string;
 }
 
-// Interfaz para la respuesta de login de la API
 export interface LoginApiResponse {
   token: string;
 }
 
-// Interfaz para la respuesta de registro de la API
 export interface RegisterApiResponse {
   auth_token: string;
   message: string;
   user: User;
 }
 
-// Interfaz para la estructura de datos al registrar un usuario en la API
 export interface RegisterApiRequest {
   name: string;
   last_name: string;

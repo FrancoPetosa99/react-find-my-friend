@@ -89,9 +89,8 @@ const PetDetail: React.FC = () => {
     try {
       setMarkingAsFound(true);
       await petService.markPetAsFound(pet.id);
-      // Actualizar el estado local de la mascota
       setPet({ ...pet, found: true });
-      setError(''); // Limpiar cualquier error previo
+      setError('');
     } catch (err) {
       setError('Error al marcar la mascota como encontrada');
       console.error('Error marking pet as found:', err);
@@ -214,8 +213,6 @@ const PetDetail: React.FC = () => {
               )}
             </Card.Body>
           </Card>
-
-          {/* Botón para marcar como encontrada - solo visible para el dueño */}
           {pet.can_edit && !pet.found && (
             <Card className="mt-3">
               <Card.Header>
@@ -247,8 +244,6 @@ const PetDetail: React.FC = () => {
               </Card.Body>
             </Card>
           )}
-
-          {/* Mensaje cuando la mascota ya está marcada como encontrada */}
           {pet.found && (
             <Card className="mt-3 border-success">
               <Card.Header className="bg-success text-white">
@@ -264,8 +259,6 @@ const PetDetail: React.FC = () => {
           )}
         </Col>
       </Row>
-
-      {/* Delete Confirmation Modal */}
       <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>

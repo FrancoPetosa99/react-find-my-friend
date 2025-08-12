@@ -1,8 +1,6 @@
 import { Pet, PetApiResponse, PetListApiResponse, PaginatedApiResponse, CreatePetApiRequest, PetForm, PetDetail  } from '../types';
 
-//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-//const API_BASE_URL = "http://api-find-my-friend.brazilsouth.cloudapp.azure.com:8080/api/v1";
-const API_BASE_URL = "/api/v1";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 const getAuthToken = (): string | null => {
   return localStorage.getItem('authToken');
@@ -82,7 +80,6 @@ class PetService {
     try {
       const headers = createAuthHeaders();
       
-      // Verificar que hay un token disponible para endpoints protegidos
       if (!getAuthToken()) {
         throw new Error('Token de autenticación no encontrado. Por favor, inicia sesión nuevamente.');
       }
@@ -174,7 +171,7 @@ class PetService {
     city?: string;
     searchTerm?: string;
   }): Promise<Pet[]> {
-    // En producción, usar API real con query parameters
+    
     const params = new URLSearchParams();
     if (filters.type) params.append('type', filters.type);
     if (filters.breed) params.append('breed', filters.breed);

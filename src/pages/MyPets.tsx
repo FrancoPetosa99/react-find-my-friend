@@ -20,9 +20,7 @@ const MyPets: React.FC = () => {
   const loadMyPets = async () => {
     try {
       setLoading(true);
-      // En un caso real, el servicio filtraría por userId
       const allPets = await petService.getAllPets();
-      // Simular filtrado por usuario (en realidad vendría del backend)
       const userPets: Pet[] = [];
       setMyPets(userPets);
     } catch (err) {
@@ -134,13 +132,11 @@ const MyPets: React.FC = () => {
         </Col>
       </Row>
 
-      {/* Pets Grid */}
       {myPets.length > 0 ? (
         <Row>
           {myPets.map((pet) => (
             <Col key={pet.id} lg={4} md={6} className="mb-4">
               <Card className="h-100 position-relative">
-                {/* Action Buttons - Top Right */}
                 <div className="position-absolute top-0 end-0 p-2" style={{ zIndex: 10 }}>
                   <Button
                     variant="outline-primary"
@@ -160,8 +156,6 @@ const MyPets: React.FC = () => {
                     <i className="bi bi-trash"></i>
                   </Button>
                 </div>
-
-                {/* Pet Content */}
                 <div style={{ padding: '1rem' }}>
                   <PetImage src={pet.imageUrl} alt={pet.name} />
                   <Card.Body className="px-0">
@@ -208,8 +202,6 @@ const MyPets: React.FC = () => {
           </Button>
         </div>
       )}
-
-      {/* Delete Confirmation Modal */}
       <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>

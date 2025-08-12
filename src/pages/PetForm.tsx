@@ -21,7 +21,6 @@ const PetForm: React.FC = () => {
   const [previewUrl, setPreviewUrl] = useState<string>('');
   const [selectedProvince, setSelectedProvince] = useState('');
 
-  // Cleanup preview URL when component unmounts
   useEffect(() => {
     return () => {
       if (previewUrl) {
@@ -62,7 +61,7 @@ const PetForm: React.FC = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Validate file type
+
       if (!file.type.startsWith('image/')) {
         setErrors(prev => ({
           ...prev,
@@ -71,7 +70,6 @@ const PetForm: React.FC = () => {
         return;
       }
 
-      // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setErrors(prev => ({
           ...prev,
@@ -83,7 +81,6 @@ const PetForm: React.FC = () => {
       setSelectedFile(file);
       setErrors(prev => ({ ...prev, imageUrl: '' }));
 
-      // Create preview URL
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
     }
@@ -135,7 +132,6 @@ const PetForm: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Crear FormData para enviar archivo
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('description', formData.description);
@@ -149,10 +145,8 @@ const PetForm: React.FC = () => {
         formDataToSend.append('picture', selectedFile);
       }
 
-      // Usar el servicio para crear la mascota
       await petService.createPetWithImage(formDataToSend);
-      
-      // Redirigir al home después de crear exitosamente
+    
       navigate('/');
     } catch (error) {
       setSubmitError('Error al publicar la mascota. Intenta nuevamente.');
@@ -168,7 +162,6 @@ const PetForm: React.FC = () => {
         <h2>🐾 Publicar Mascota Perdida</h2>
         <p className="text-muted">Completa la información para ayudar a encontrar tu mascota</p>
       </div>
-
       <Row className="justify-content-center">
         <Col xl={10} lg={11} md={12}>
           <Card>
@@ -178,13 +171,9 @@ const PetForm: React.FC = () => {
                   {submitError}
                 </Alert>
               )}
-
               <Form onSubmit={handleSubmit}>
-                {/* Información básica de la mascota */}
                 <div className="mb-4">
                   <h5 className="mb-3">📋 Información de la mascota</h5>
-                  
-                  {/* Nombre de la mascota - primer campo */}
                   <Form.Group className="mb-3">
                     <Form.Label>Nombre de la mascota *</Form.Label>
                     <Form.Control
@@ -199,8 +188,6 @@ const PetForm: React.FC = () => {
                       {errors.name}
                     </Form.Control.Feedback>
                   </Form.Group>
-
-                  {/* Tipo y Raza en la misma fila */}
                   <Row>
                     <Col lg={6} md={6}>
                       <Form.Group className="mb-3">
@@ -316,8 +303,6 @@ const PetForm: React.FC = () => {
                       </Form.Group>
                     </Col>
                   </Row>
-
-                  {/* Preview de la imagen */}
                   {previewUrl && (
                     <div className="mb-3">
                       <Form.Label>Vista previa de la imagen:</Form.Label>
@@ -331,7 +316,6 @@ const PetForm: React.FC = () => {
                       </div>
                     </div>
                   )}
-
                   <Form.Group className="mb-4">
                     <Form.Label>Descripción detallada *</Form.Label>
                     <Form.Control
@@ -348,10 +332,6 @@ const PetForm: React.FC = () => {
                     </Form.Control.Feedback>
                   </Form.Group>
                 </div>
-
-
-
-                {/* Botones de acción */}
                 <div className="d-flex justify-content-between align-items-center pt-3 border-top">
                   <Button
                     variant="outline-secondary"
