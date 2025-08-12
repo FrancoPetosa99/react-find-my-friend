@@ -1,6 +1,7 @@
 import { LoginApiResponse, RegisterApiRequest, RegisterApiResponse } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = "http://api-find-my-friend.brazilsouth.cloudapp.azure.com:8080/api/v1";
 
 const getAuthToken = (): string | null => {
   return localStorage.getItem('authToken');
