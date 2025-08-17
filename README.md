@@ -8,16 +8,6 @@ Proyecto **Find My Friend** desarrollado para la materia Administración de Sist
 ## Descripción
 Find my friend es una aplicación pensada para que los usuarios publiquen mascotas perdidas y ayuden a encontrar a sus dueños contactandolos a través de la plataforma.
 
-## 🚀 Características
-
-- **Página principal** con listado de mascotas perdidas
-- **Sistema de filtros** por tipo, raza y ciudad
-- **Formulario de publicación** para mascotas perdidas
-- **Página de detalle** con información completa de la mascota
-- **Sistema de autenticación** (login/registro)
-- **Diseño responsivo** con Bootstrap
-- **Interfaz moderna** y fácil de usar
-
 ## 🛠️ Tecnologías Utilizadas
 
 - **React 18** - Biblioteca de JavaScript para interfaces de usuario
@@ -162,10 +152,6 @@ find_my_friend/
 
 La aplicación utiliza variables de entorno para configurar el comportamiento según el ambiente:
 
-### Desarrollo (Automático)
-- Usa datos mock automáticamente
-- No requiere configuración adicional
-
 ### Producción
 Crea un archivo `.env` basado en `env.example`:
 
@@ -182,45 +168,6 @@ VITE_API_BASE_URL=https://tu-api.com/api
 ### Variables Disponibles
 - `VITE_API_BASE_URL` - URL base de la API (solo para producción)
 
-## 🖼️ Sistema de Imágenes
-
-La aplicación incluye un sistema de imágenes optimizado:
-
-### Componente PetImage
-- **Manejo de errores** - Si una imagen falla, muestra una imagen por defecto
-- **Lazy loading** - Las imágenes se cargan solo cuando son visibles
-- **Optimización** - Usa imágenes de Unsplash con parámetros de optimización
-
-### Estructura de Imágenes
-```
-public/images/pets/
-├── README.md           # Documentación de imágenes
-├── default-pet.jpg     # Imagen por defecto
-└── [mascota].jpg      # Imágenes específicas (opcional)
-```
-
-### URLs de Imágenes
-- **Desarrollo**: Usa imágenes de Unsplash optimizadas
-- **Producción**: Puede usar imágenes locales o URLs de CDN
-- **Fallback**: Si una imagen falla, usa `/images/pets/default-pet.jpg`
-
-### Agregar Nuevas Imágenes
-1. Coloca la imagen en `public/images/pets/`
-2. Actualiza `src/data/mockData.ts` con la nueva URL
-3. El componente PetImage manejará automáticamente los errores
-
-## 🎨 Personalización
-
-### Colores y Estilos
-Los estilos principales se encuentran en:
-- `src/index.css` - Estilos globales
-- `src/App.css` - Estilos del componente App
-
-### Componentes
-Los componentes están organizados en:
-- `src/components/` - Componentes reutilizables
-- `src/pages/` - Páginas principales
-
 ## 📱 Responsive Design
 
 La aplicación está diseñada para funcionar en:
@@ -228,32 +175,3 @@ La aplicación está diseñada para funcionar en:
 - 📱 Tablets
 - 💻 Computadoras de escritorio
 
-## 🔮 Próximas Funcionalidades
-
-- [ ] Integración con backend
-- [ ] Sistema de notificaciones
-- [ ] Mapa para ubicaciones
-- [ ] Subida de imágenes real
-- [ ] Sistema de mensajería
-- [ ] Filtros avanzados
-- [ ] Página de perfil de usuario
-
-## 🤝 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 📞 Contacto
-
-Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
-
----
-
-¡Gracias por usar Find My Friend! 🐾 
