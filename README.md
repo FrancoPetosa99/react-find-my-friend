@@ -1,6 +1,12 @@
-# 🐾 Find My Friend - Aplicación de Mascotas Perdidas
+# 🐾 Find My Friend - API REST
 
-Una aplicación web para ayudar a encontrar mascotas perdidas. Los usuarios pueden publicar perfiles de sus mascotas perdidas y la comunidad puede ayudar a encontrarlas.
+| <h1>UTN-FRLP</h1> | <img src="./logo.png" alt="Logo del Proyecto" width="100"> |
+|-------------------|----------------------------------|
+
+Proyecto **Find My Friend** desarrollado para la materia Administración de Sistemas de Información de la carrera Ingeniería en Sistema de Información de la Universidad Tecnológica Nacional - Regional La Plata
+
+## Descripción
+Find my friend es una aplicación pensada para que los usuarios publiquen mascotas perdidas y ayuden a encontrar a sus dueños contactandolos a través de la plataforma.
 
 ## 🚀 Características
 
